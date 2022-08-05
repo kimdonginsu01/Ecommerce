@@ -45,7 +45,7 @@ export default {
     'vue-sweetalert2/nuxt/no-css',
     'nuxt-webfontloader',
   ],
-  webfontLoader: {
+  webfontloader: {
     google: {
       families: ['DM+Sans:wght@400;500;700&display=swap'],
     },
