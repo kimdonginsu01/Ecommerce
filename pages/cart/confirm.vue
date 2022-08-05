@@ -1,0 +1,167 @@
+<template>
+  <div>
+    <Nav />
+    <br />
+    <div v-if="$store.state.cart.cart.length === 0" class="text-center">
+      <p>No items just yet. Keep shopping</p>
+    </div>
+    <v-container>
+      <div v-if="$store.state.cart.cart.length > 0" class="mb-3">
+        <v-btn nuxt to="/cart" min-width="150" min-height="45" depressed
+          >Back</v-btn
+        >
+        <v-btn
+          min-width="150"
+          min-height="45"
+          depressed
+          color="primary"
+          @click="process"
+          >Complete</v-btn
+        >
+      </div>
+      <v-form ref="form" lazy-validation class="mt-10">
+        <p class="font-weight-bold">Personal & Delivery</p>
+        <v-row>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="email"
+              :rules="[rules.required, rules.email]"
+              outlined
+              label="Email"
+              type="email"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="name"
+              :rules="[rules.required]"
+              outlined
+              label="Full name"
+              type="text"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="phone"
+              outlined
+              label="Phone"
+              type="tel"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="address"
+              :rules="[rules.required]"
+              outlined
+              label="Address"
+              type="text"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="city"
+              :rules="[rules.required]"
+              outlined
+              label="City"
+              type="text"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="country"
+              :rules="[rules.required]"
+              outlined
+              label="Country"
+              type="text"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <p class="font-weight-bold">Credit card</p>
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="cc"
+              :rules="[rules.required]"
+              outlined
+              label="Credit card"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="expdate"
+              :rules="[rules.required]"
+              outlined
+              label="Exp date"
+              type="date"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="cvv"
+              :rules="[rules.required]"
+              outlined
+              label="Security code/CVV"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+      </v-form>
+    </v-container>
+    <Footer />
+    <ScrollTop />
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: null,
+      name: null,
+      phone: null,
+      address: null,
+      city: null,
+      country: null,
+      cc: '1212121212',
+      expdate: '08/20',
+      cvv: '857',
+      rules: {
+        required: (v) => !!v || `Required`,
+        email: (v) => {
+          const pattern =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(v) || 'Invalid e-mail'
+        },
+      },
+    }
+  },
+  methods: {
+    async process() {
+      if (!this.$refs.form.validate()) return
+
+      await this.$swal({
+        title: 'Processing your order',
+        icon: 'info',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        timer: 3000,
+        text: 'Please wait',
+        showConfirmButton: false,
+      })
+
+      await this.$swal({
+        title: 'Order Complete',
+        icon: 'success',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        timer: 3000,
+        text: 'Thank you for choosing us',
+      })
+
+      this.$store.commit('cart/ClearCart')
+      this.$router.push('/')
+    },
+  },
+}
+</script>
+
+<style></style>
