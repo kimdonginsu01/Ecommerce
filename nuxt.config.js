@@ -34,6 +34,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -43,11 +44,10 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     'vue-sweetalert2/nuxt/no-css',
-    'nuxt-webfontloader',
   ],
-  webfontloader: {
-    google: {
-      families: ['DM+Sans:wght@400;500;700&display=swap'],
+  googleFonts: {
+    families: {
+      'DM+Sans': [400, 500, 700],
     },
   },
 

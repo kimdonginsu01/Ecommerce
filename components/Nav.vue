@@ -18,9 +18,9 @@
         <v-icon size="20">mdi-store-outline</v-icon>
       </v-btn>
       <v-badge
+        v-if="$store.state.cart.cart.length > 0"
         overlap
         :content="$store.state.cart.cart.length"
-        v-if="$store.state.cart.cart.length > 0"
       >
         <v-btn nuxt to="/cart" icon>
           <v-icon size="20">mdi-cart-outline</v-icon>
@@ -31,8 +31,8 @@
       </v-btn>
       <v-divider vertical class="mx-md-5 mx-2" />
       <v-menu offset-y left>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on" icon>
+        <template #activator="{ on, attrs }">
+          <v-btn icon v-bind="attrs" v-on="on">
             <v-icon size="20">mdi-account</v-icon>
           </v-btn>
         </template>
@@ -46,7 +46,7 @@
             <v-list-title>View orders</v-list-title>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item link>
+          <v-list-item nuxt to="/login" link>
             <v-icon size="20" class="mr-5">mdi-logout</v-icon>
             <v-list-title>Log out</v-list-title>
           </v-list-item>
