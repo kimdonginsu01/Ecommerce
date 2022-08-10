@@ -27,11 +27,20 @@ export default {
   },
   methods: {
     async submit() {
-      await this.$swal.fire(
-        'Thank you for subscribing',
-        'You will be notified when we have a deal or items on sale',
-        'success'
-      )
+      if (this.$i18n.locale === 'en') {
+        await this.$swal.fire(
+          'Thank you for subscribing',
+          'You will be notified when we have a deal or items on sale',
+          'success'
+        )
+      }
+      if (this.$i18n.locale === 'vn') {
+        await this.$swal.fire(
+          'Cảm ơn bạn đã đăng ký',
+          'Bạn sẽ được thông báo mỗi khi chúng tôi có mã khuyến mãi hoặc sản phẩm đang sale',
+          'success'
+        )
+      }
     },
   },
 }
