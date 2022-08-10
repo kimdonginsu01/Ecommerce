@@ -89,11 +89,8 @@ sw.*
 # Vim swap files
 *.swp
 
-components/
-
-content/
-
-pages/
+pages/cart
+pages/products
 
 plugins/
 

@@ -23,7 +23,7 @@ export default {
   css: ['~/assets/main.css', '@sweetalert2/theme-material-ui'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/cart.js'],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -43,13 +43,40 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     'vue-sweetalert2/nuxt/no-css',
-    'nuxt-webfontloader',
+    [
+      'nuxt-i18n',
+      {
+        locales: ['en', 'vn'],
+        defaultLocale: 'en',
+        vueI18n: {
+          fallbackLocale: 'en',
+          messages: {
+            en: {
+              changeTheme: 'Change theme',
+              viewOrders: 'View orders',
+              logOut: 'Log out',
+              viewProduct: 'Check it out',
+              checkTheseOut: 'Check these out',
+              newsLetter: 'Newsletter',
+              newsLetterDesciption: 'Subscribe to reveive discounts & more',
+              subscribe: 'Subscribe',
+            },
+            vn: {
+              changeTheme: 'Đổi giao diện',
+              viewOrders: 'Lịch sử đơn hàng',
+              logOut: 'Đăng xuất',
+              viewProduct: 'Xem sản phẩm',
+              checkTheseOut: 'Sản phẩm đang sale',
+              newsLetter: 'Hòm thư',
+              newsLetterDesciption:
+                'Đăng ký để nhận các thông báo giảm giá và hơn thế nữa',
+              subscribe: 'Đăng ký',
+            },
+          },
+        },
+      },
+    ],
   ],
-  webfontLoader: {
-    google: {
-      families: ['DM+Sans:wght@400;500;700&display=swap'],
-    },
-  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
