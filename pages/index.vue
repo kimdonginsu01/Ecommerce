@@ -1,10 +1,10 @@
 <template>
   <div>
     <Nav />
-    <HomeCarousel :sale_items="sale_items" />
+    <HomeCarousel :saleItems="sale_items" />
     <br /><br />
     <v-container>
-      <h1 class="text-md-h4 text-h6">Check these out</h1>
+      <h1 class="text-md-h4 text-h6">{{ $t('checkTheseOut') }} 🔥</h1>
       <br />
       <ProductSlider :products="products" />
       <br /><br /><br />

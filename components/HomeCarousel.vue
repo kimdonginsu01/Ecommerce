@@ -11,7 +11,7 @@
       </v-btn>
     </template>
     <v-carousel-item
-      v-for="(product, index) in sale_items"
+      v-for="(product, index) in saleItems"
       :key="`saleItem-${index}`"
     >
       <v-img height="100vh" :src="product.image">
@@ -26,7 +26,7 @@
                   {{ product.name }}
                 </h2>
                 <p class="text-md-h5 text-subtitle-1 primary--text mt-5">
-                  {{ $formatMoney(product.price) }}
+                  {{ product.price }}
                 </p>
                 <p class="text-md-body-2 mb-7" style="color: #000">
                   {{ product.description }}
@@ -38,8 +38,9 @@
                   color="primary"
                   class="text-capitalize"
                   min-height="40"
-                  >Check it out</v-btn
                 >
+                  {{ $t('viewProduct') }}
+                </v-btn>
               </div>
             </v-col>
           </v-row>
@@ -52,7 +53,10 @@
 <script>
 export default {
   props: {
-    sale_items: Array,
+    saleItems: {
+      type: Array,
+      default: null,
+    },
   },
 }
 </script>

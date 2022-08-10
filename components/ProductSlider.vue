@@ -4,13 +4,7 @@
       v-for="(product, index) in products"
       :key="`hotProduct-${index}`"
     >
-      <v-card
-        nuxt
-        :to="`/products/${product.id}`"
-        color="surface"
-        width="300"
-        class="el ma-2 mb-5 mr-5"
-      >
+      <v-card color="surface" width="300" class="el ma-2 mb-5 mr-5">
         <v-img height="300" :src="product.image">
           <template #placeholder>
             <v-row class="fill-height" justify="center" align="center">
@@ -27,16 +21,16 @@
           product.name
         }}</v-card-title>
         <v-card-subtitle class="primary--text pb-3">{{
-          $formatMoney(product.price)
+          product.price
         }}</v-card-subtitle>
         <v-card-text>
           <v-chip
+            v-for="(tag, tagIndex) in product.tags"
+            :key="`prod${product.id}-${tagIndex}`"
             x-small
             label
             outlined
             class="mr-1"
-            v-for="(tag, index) in product.tags"
-            :key="`prod${product.id}-${index}`"
             >{{ tag }}
           </v-chip>
         </v-card-text>
@@ -48,7 +42,10 @@
 <script>
 export default {
   props: {
-    products: Array,
+    products: {
+      type: Array,
+      default: null,
+    },
   },
 }
 </script>
