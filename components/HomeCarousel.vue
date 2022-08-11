@@ -33,7 +33,11 @@
                 </p>
                 <v-btn
                   nuxt
-                  :to="`/products/${product.id}`"
+                  :to="
+                    localePath({
+                      path: `products/${product.id}`,
+                    })
+                  "
                   depressed
                   color="primary"
                   class="text-capitalize"

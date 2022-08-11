@@ -42,8 +42,9 @@
             min-width="170"
             class="text-capitalize"
             color="primary"
-            >Add to cart</v-btn
           >
+            {{ $t('addToCart') }}
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>

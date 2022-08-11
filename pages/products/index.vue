@@ -10,14 +10,16 @@
               prepend-inner-icon="mdi-magnify"
               outlined
               clearable
-              placeholder="Search"
+              :placeholder="$t('search')"
             ></v-text-field>
             <v-list
               v-if="$vuetify.breakpoint.mdAndUp"
               subheader
               color="transparent"
             >
-              <v-subheader>Categories</v-subheader>
+              <v-subheader class="text-md-h6">{{
+                $t('categories')
+              }}</v-subheader>
               <v-list-item
                 v-for="(category, index) in categories"
                 :key="`category${index}`"
@@ -39,7 +41,11 @@
               <v-col :key="`product${product.id}-${index}`" cols="12" md="6">
                 <v-card
                   nuxt
-                  :to="`/products/${product.id}`"
+                  :to="
+                    localePath({
+                      path: `products/${product.id}`,
+                    })
+                  "
                   color="surface"
                   class="el ma-2 mb-5 mr-5"
                 >
@@ -63,7 +69,7 @@
                     product.name
                   }}</v-card-title>
                   <v-card-subtitle class="primary--text pb-3">{{
-                    $formatMoney(product.price)
+                    product.price
                   }}</v-card-subtitle>
                   <v-card-text>
                     <v-chip

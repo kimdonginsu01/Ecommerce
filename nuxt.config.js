@@ -39,44 +39,29 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/i18n',
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     'vue-sweetalert2/nuxt/no-css',
-    [
-      'nuxt-i18n',
+  ],
+  i18n: {
+    locales: [
       {
-        locales: ['en', 'vn'],
-        defaultLocale: 'en',
-        vueI18n: {
-          fallbackLocale: 'en',
-          messages: {
-            en: {
-              changeTheme: 'Change theme',
-              viewOrders: 'View orders',
-              logOut: 'Log out',
-              viewProduct: 'Check it out',
-              checkTheseOut: 'Check these out',
-              newsLetter: 'Newsletter',
-              newsLetterDesciption: 'Subscribe to reveive discounts & more',
-              subscribe: 'Subscribe',
-            },
-            vn: {
-              changeTheme: 'Đổi giao diện',
-              viewOrders: 'Lịch sử đơn hàng',
-              logOut: 'Đăng xuất',
-              viewProduct: 'Xem sản phẩm',
-              checkTheseOut: 'Sản phẩm đang sale',
-              newsLetter: 'Hòm thư',
-              newsLetterDesciption:
-                'Đăng ký để nhận các thông báo giảm giá và hơn thế nữa',
-              subscribe: 'Đăng ký',
-            },
-          },
-        },
+        code: 'en',
+        name: 'English',
+        file: 'en.js',
+      },
+      {
+        code: 'vi',
+        name: 'Việt Nam',
+        file: 'vi.js',
       },
     ],
-  ],
+    lazy: true,
+    langDir: 'locales/',
+    defaultLocale: 'en',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

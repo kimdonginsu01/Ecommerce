@@ -4,7 +4,17 @@
       v-for="(product, index) in products"
       :key="`hotProduct-${index}`"
     >
-      <v-card color="surface" width="300" class="el ma-2 mb-5 mr-5">
+      <v-card
+        nuxt
+        :to="
+          localePath({
+            path: `products/${product.id}`,
+          })
+        "
+        color="surface"
+        width="300"
+        class="el ma-2 mb-5 mr-5"
+      >
         <v-img height="300" :src="product.image">
           <template #placeholder>
             <v-row class="fill-height" justify="center" align="center">
