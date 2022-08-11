@@ -43,6 +43,7 @@
       </v-btn>
       <v-divider vertical class="mx-md-5 mx-2" />
       <v-menu offset-y left open-on-hover>
+
         <template #activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
             <v-icon size="20">mdi-account</v-icon>
